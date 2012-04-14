@@ -20,14 +20,11 @@
 
 using System;
 using System.Net;
-using System.Text;
-
-using Spring.Json;
 using Spring.Http;
 using Spring.Rest.Client;
 using Spring.Rest.Client.Support;
 
-namespace Spring.Social.Readability.Api.Impl
+namespace CSharp.Readability.Api.Impl
 {
     /// <summary>
     /// Implementation of the <see cref="IResponseErrorHandler"/> that handles errors from Readability's REST API, 
@@ -37,10 +34,7 @@ namespace Spring.Social.Readability.Api.Impl
     /// <author>Bruno Baia (.NET)</author>
     class ReadabilityErrorHandler : DefaultResponseErrorHandler
     {
-        // Default encoding for JSON
-        private static readonly Encoding DEFAULT_CHARSET = new UTF8Encoding(false); // Remove byte Order Mask (BOM)
-
-        /// <summary>
+    	/// <summary>
         /// Handles the error in the given response. 
         /// <para/>
         /// This method is only called when HasError() method has returned <see langword="true"/>.
@@ -57,11 +51,11 @@ namespace Spring.Social.Readability.Api.Impl
             int type = (int)response.StatusCode / 100;
             if (type == 4)
             {
-                this.HandleClientErrors(response);
+                HandleClientErrors(response);
             }
             else if (type == 5)
             {
-                this.HandleServerErrors(response.StatusCode);
+                HandleServerErrors(response.StatusCode);
             }
 
             // if not otherwise handled, do default handling and wrap with ReadabilityApiException
@@ -75,47 +69,47 @@ namespace Spring.Social.Readability.Api.Impl
             }
         }
 
-        private void HandleClientErrors(HttpResponseMessage<byte[]> response) 
+        private void HandleClientErrors(HttpResponseMessage<byte[]> response)
         {
-		    string errorText = this.ExtractErrorDetailsFromResponse(response);
-			if (errorText == null) 
-            {
-				errorText = "";
-		    }
+        	if (response == null) throw new ArgumentNullException("response");
 
-			if (response.StatusCode == HttpStatusCode.BadRequest)
+        	if (response.StatusCode == HttpStatusCode.BadRequest)
 			{
 				throw new ReadabilityApiException(
 					"The server could not understand your request. Verify that request parameters (and content, if any) are valid.",
 					ReadabilityApiError.BadRequest);
 			}
-			else if (response.StatusCode == HttpStatusCode.Unauthorized)
-			{
-				throw new ReadabilityApiException(
-					"Authentication failed or was not provided. Verify that you have sent valid credentials.",
-					ReadabilityApiError.AuthorizationRequired);
-			}
-			else if (response.StatusCode == HttpStatusCode.Forbidden)
-			{
-				throw new ReadabilityApiException(
-					"The server understood your request and verified your credentials, but you are not allowed to perform the requested action.",
-					ReadabilityApiError.Forbidden);
-			}
-			else if (response.StatusCode == HttpStatusCode.NotFound)
-			{
-				throw new ReadabilityApiException(
-					"The resource that you requested does not exist.",
-					ReadabilityApiError.NotFound);
-			}
-			else if (response.StatusCode == HttpStatusCode.Conflict)
-			{
-				throw new ReadabilityApiException(
-					"The resource that you are trying to create already exists. This should also provide a Location header to the resource in question.",
-					ReadabilityApiError.Conflict);
-			}
-	    }
 
-	    private void HandleServerErrors(HttpStatusCode statusCode)
+        	if (response.StatusCode == HttpStatusCode.Unauthorized)
+        	{
+        		throw new ReadabilityApiException(
+        			"Authentication failed or was not provided. Verify that you have sent valid credentials.",
+        			ReadabilityApiError.AuthorizationRequired);
+        	}
+        	
+			if (response.StatusCode == HttpStatusCode.Forbidden)
+        	{
+        		throw new ReadabilityApiException(
+        			"The server understood your request and verified your credentials, but you are not allowed to perform the requested action.",
+        			ReadabilityApiError.Forbidden);
+        	}
+        	
+			if (response.StatusCode == HttpStatusCode.NotFound)
+        	{
+        		throw new ReadabilityApiException(
+        			"The resource that you requested does not exist.",
+        			ReadabilityApiError.NotFound);
+        	}
+        	
+			if (response.StatusCode == HttpStatusCode.Conflict)
+        	{
+        		throw new ReadabilityApiException(
+        			"The resource that you are trying to create already exists. This should also provide a Location header to the resource in question.",
+        			ReadabilityApiError.Conflict);
+        	}
+        }
+
+    	private void HandleServerErrors(HttpStatusCode statusCode)
         {
 		    if (statusCode == HttpStatusCode.InternalServerError) 
             {
@@ -123,17 +117,6 @@ namespace Spring.Social.Readability.Api.Impl
 					"An unknown error has occurred.", 
                     ReadabilityApiError.InternalServerError);
 		    }
-	    }
-
-        private string ExtractErrorDetailsFromResponse(HttpResponseMessage<byte[]> response) 
-        {
-            if (response.Body == null)
-            {
-                return null;
-            }
-            MediaType contentType = response.Headers.ContentType;
-            Encoding charset = (contentType != null && contentType.CharSet != null) ? contentType.CharSet : DEFAULT_CHARSET;
-            return charset.GetString(response.Body, 0, response.Body.Length);
 	    }
     }
 }

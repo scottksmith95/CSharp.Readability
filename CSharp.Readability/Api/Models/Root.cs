@@ -19,9 +19,8 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
 
-namespace Spring.Social.Readability.Api
+namespace CSharp.Readability.Api.Models
 {
 	/// <summary>
 	/// Represents a Readability root.

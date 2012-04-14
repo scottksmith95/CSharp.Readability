@@ -18,16 +18,12 @@
 
 #endregion
 
-using System;
-using System.Net;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-
-using Spring.Http;
+using CSharp.Readability.Api.Interfaces;
+using CSharp.Readability.Api.Models;
 using Spring.Rest.Client;
 using System.Threading.Tasks;
 
-namespace Spring.Social.Readability.Api.Impl
+namespace CSharp.Readability.Api.Impl
 {
     /// <summary>
     /// Implementation of <see cref="IUserOperations"/>, providing binding to Readabilitys' user-oriented REST resources.
@@ -35,26 +31,26 @@ namespace Spring.Social.Readability.Api.Impl
 	/// <author>Scott Smith</author>
     class UserTemplate : AbstractReadabilityOperations, IUserOperations
     {
-        private RestTemplate restTemplate;
+        private readonly RestTemplate _restTemplate;
 
         public UserTemplate(RestTemplate restTemplate, bool isAuthorized)
             : base(isAuthorized)
         {
-            this.restTemplate = restTemplate;
+            _restTemplate = restTemplate;
         }
 
         #region IUserOperations Members
 
 		public User GetUser() 
         {
-		    this.EnsureIsAuthorized();
-			return this.restTemplate.GetForObject<User>("users/_current");
+		    EnsureIsAuthorized();
+			return _restTemplate.GetForObject<User>("users/_current");
 	    }
 
 		public Task<User> GetUserAsync()
 		{
-			this.EnsureIsAuthorized();
-			return this.restTemplate.GetForObjectAsync<User>("users/_current");
+			EnsureIsAuthorized();
+			return _restTemplate.GetForObjectAsync<User>("users/_current");
 		}
 
         #endregion

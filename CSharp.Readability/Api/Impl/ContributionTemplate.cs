@@ -19,15 +19,14 @@
 #endregion
 
 using System;
-using System.Net;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-
-using Spring.Http;
+using System.Globalization;
+using CSharp.Readability.Api.Interfaces;
+using CSharp.Readability.Api.Models;
 using Spring.Rest.Client;
 using System.Threading.Tasks;
 
-namespace Spring.Social.Readability.Api.Impl
+namespace CSharp.Readability.Api.Impl
 {
 	/// <summary>
 	/// Implementation of <see cref="IContributionOperations"/>, providing binding to Readabilitys' contribution-oriented REST resources.
@@ -35,38 +34,38 @@ namespace Spring.Social.Readability.Api.Impl
 	/// <author>Scott Smith</author>
 	class ContributionTemplate : AbstractReadabilityOperations, IContributionOperations
 	{
-		private RestTemplate restTemplate;
+		private readonly RestTemplate _restTemplate;
 
 		public ContributionTemplate(RestTemplate restTemplate, bool isAuthorized)
 			: base(isAuthorized)
 		{
-			this.restTemplate = restTemplate;
+			_restTemplate = restTemplate;
 		}
 
 		#region IContributionOperations Members
 
 		public ContributionCollection GetContributions(int page = 1, int perPage = 20, string domain = "", DateTime? since = null, DateTime? until = null)
 		{
-			this.EnsureIsAuthorized();
-			NameValueCollection parameters = new NameValueCollection();
-			if (since.HasValue) parameters.Add("since", since.Value.ToString());
-			if (until.HasValue) parameters.Add("until", until.Value.ToString());
+			EnsureIsAuthorized();
+			var parameters = new NameValueCollection();
+			if (since.HasValue) parameters.Add("since", since.Value.ToString(CultureInfo.InvariantCulture));
+			if (until.HasValue) parameters.Add("until", until.Value.ToString(CultureInfo.InvariantCulture));
 			if (!String.IsNullOrEmpty(domain)) parameters.Add("domain", domain);
-			parameters.Add("page", page.ToString());
-			parameters.Add("per_page", perPage.ToString());
-			return this.restTemplate.GetForObject<ContributionCollection>(BuildUrl("contributions", parameters));
+			parameters.Add("page", page.ToString(CultureInfo.InvariantCulture));
+			parameters.Add("per_page", perPage.ToString(CultureInfo.InvariantCulture));
+			return _restTemplate.GetForObject<ContributionCollection>(BuildUrl("contributions", parameters));
 		}
 
 		public Task<ContributionCollection> GetContributionsAsync(int page = 1, int perPage = 20, string domain = "", DateTime? since = null, DateTime? until = null)
 		{
-			this.EnsureIsAuthorized();
-			NameValueCollection parameters = new NameValueCollection();
-			if (since.HasValue) parameters.Add("since", since.Value.ToString());
-			if (until.HasValue) parameters.Add("until", until.Value.ToString());
+			EnsureIsAuthorized();
+			var parameters = new NameValueCollection();
+			if (since.HasValue) parameters.Add("since", since.Value.ToString(CultureInfo.InvariantCulture));
+			if (until.HasValue) parameters.Add("until", until.Value.ToString(CultureInfo.InvariantCulture));
 			if (!String.IsNullOrEmpty(domain)) parameters.Add("domain", domain);
-			parameters.Add("page", page.ToString());
-			parameters.Add("per_page", perPage.ToString());
-			return this.restTemplate.GetForObjectAsync<ContributionCollection>(BuildUrl("contributions", parameters));
+			parameters.Add("page", page.ToString(CultureInfo.InvariantCulture));
+			parameters.Add("per_page", perPage.ToString(CultureInfo.InvariantCulture));
+			return _restTemplate.GetForObjectAsync<ContributionCollection>(BuildUrl("contributions", parameters));
 		}
 
 		#endregion

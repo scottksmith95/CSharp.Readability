@@ -21,8 +21,9 @@
 using System;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
+using Spring.Social;
 
-namespace Spring.Social.Readability.Api
+namespace CSharp.Readability.Api
 {
     /// <summary>
     /// The exception that is thrown when a error occurs while consuming Readability REST API.
@@ -31,14 +32,14 @@ namespace Spring.Social.Readability.Api
     [Serializable]
     public class ReadabilityApiException : SocialException
     {
-        private ReadabilityApiError error;
+        private readonly ReadabilityApiError _error;
 
         /// <summary>
         /// Gets the Readability error.
         /// </summary>
         public ReadabilityApiError Error
         {
-            get { return this.error; }
+            get { return _error; }
         }
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace Spring.Social.Readability.Api
         public ReadabilityApiException(string message, ReadabilityApiError error)
             : base(message)
         {
-            this.error = error;
+            _error = error;
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace Spring.Social.Readability.Api
         public ReadabilityApiException(string message, Exception innerException)
             : base(message, innerException)
         {
-            this.error = ReadabilityApiError.InternalServerError;
+            _error = ReadabilityApiError.InternalServerError;
         }
 
         /// <summary>
@@ -79,7 +80,7 @@ namespace Spring.Social.Readability.Api
         {
             if (info != null)
             {
-                this.error = (ReadabilityApiError)info.GetValue("Error", typeof(ReadabilityApiError));
+                _error = (ReadabilityApiError)info.GetValue("Error", typeof(ReadabilityApiError));
             }
         }
 
@@ -101,7 +102,7 @@ namespace Spring.Social.Readability.Api
             base.GetObjectData(info, context);
             if (info != null)
             {
-                info.AddValue("Error", this.error);
+                info.AddValue("Error", _error);
             }
         }
     }

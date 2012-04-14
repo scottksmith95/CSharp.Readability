@@ -20,10 +20,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Globalization;
+using CSharp.Readability.Api.Models;
 using Spring.Json;
 
-namespace Spring.Social.Readability.Api.Impl.Json
+namespace CSharp.Readability.Api.Impl.Json
 {
 	/// <summary>
 	/// JSON deserializer for contribution collections
@@ -71,7 +71,7 @@ namespace Spring.Social.Readability.Api.Impl.Json
 		public object Deserialize(JsonValue value, JsonMapper mapper)
 		{
 			IList<Contribution> contributions = new List<Contribution>();
-			foreach (JsonValue itemValue in value.GetValues())
+			foreach (var itemValue in value.GetValues())
 			{
 				contributions.Add(mapper.Deserialize<Contribution>(itemValue));
 			}
@@ -87,7 +87,7 @@ namespace Spring.Social.Readability.Api.Impl.Json
 	{
 		public object Deserialize(JsonValue value, JsonMapper mapper)
 		{
-			return new Contribution()
+			return new Contribution
 			{
 				Date = value.GetValue<DateTime>("date"),
 				ContributionAmount = value.GetValue<double>("contribution"),

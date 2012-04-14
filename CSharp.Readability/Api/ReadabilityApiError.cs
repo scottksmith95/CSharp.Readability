@@ -18,9 +18,7 @@
 
 #endregion
 
-using System;
-
-namespace Spring.Social.Readability.Api
+namespace CSharp.Readability.Api
 {
     /// <summary>
     /// The <see cref="ReadabilityApiError"/> enumeration is used by the <see cref="ReadabilityApiException"/> class 

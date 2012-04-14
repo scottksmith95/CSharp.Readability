@@ -19,12 +19,11 @@
 #endregion
 
 using System;
-
+using CSharp.Readability.Api.Impl;
+using CSharp.Readability.Api.Interfaces;
 using Spring.Social.OAuth1;
-using Spring.Social.Readability.Api;
-using Spring.Social.Readability.Api.Impl;
 
-namespace Spring.Social.Readability.Connect
+namespace CSharp.Readability.Connect
 {
     /// <summary>
 	/// Readability <see cref="IServiceProvider"/> implementation.
@@ -53,7 +52,7 @@ namespace Spring.Social.Readability.Connect
         /// <returns>A binding to the service provider's API.</returns>
 		public override IReadability GetApi(string accessToken, string secret)
         {
-			return new ReadabilityTemplate(this.ConsumerKey, this.ConsumerSecret, accessToken, secret);
+			return new ReadabilityTemplate(ConsumerKey, this.ConsumerSecret, accessToken, secret);
         }
     }
 }

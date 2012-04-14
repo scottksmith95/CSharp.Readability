@@ -18,13 +18,11 @@
 
 #endregion
 
-using System;
 using System.Text;
 using System.Collections.Specialized;
-
 using Spring.Http;
 
-namespace Spring.Social.Readability.Api.Impl
+namespace CSharp.Readability.Api.Impl
 {
     /// <summary>
     /// Base class for Readability operations.
@@ -33,16 +31,16 @@ namespace Spring.Social.Readability.Api.Impl
     /// <author>Bruno Baia (.NET)</author>
     abstract class AbstractReadabilityOperations
     {
-        private bool isAuthorized;
+        private readonly bool _isAuthorized;
 
-	    public AbstractReadabilityOperations(bool isAuthorized) 
+    	protected AbstractReadabilityOperations(bool isAuthorized) 
         {
-		    this.isAuthorized = isAuthorized;
+		    _isAuthorized = isAuthorized;
 	    }
 
         protected void EnsureIsAuthorized() 
         {
-		    if (!this.isAuthorized) 
+		    if (!_isAuthorized) 
             {
 			    throw new ReadabilityApiException(
                     "Authorization is required for the operation, but the API binding was created without authorization.", 
@@ -50,16 +48,9 @@ namespace Spring.Social.Readability.Api.Impl
 		    }
 	    }
 
-        protected string BuildUrl(string path, string parameterName, string parameterValue)
+    	protected string BuildUrl(string path, NameValueCollection parameters)
         {
-            NameValueCollection parameters = new NameValueCollection();
-            parameters.Add(parameterName, parameterValue);
-            return this.BuildUrl(path, parameters);
-        }
-
-        protected string BuildUrl(string path, NameValueCollection parameters)
-        {
-            StringBuilder qsBuilder = new StringBuilder();
+            var qsBuilder = new StringBuilder();
             bool isFirst = true;
             foreach (string key in parameters)
             {
@@ -76,15 +67,7 @@ namespace Spring.Social.Readability.Api.Impl
                 qsBuilder.Append('=');
                 qsBuilder.Append(HttpUtils.UrlEncode(parameters[key]));
             }
-            return path + qsBuilder.ToString();
+            return path + qsBuilder;
 	    }
-
-		public static NameValueCollection BuildPagingParametersWithPerPage(int page, int count)
-		{
-			NameValueCollection parameters = new NameValueCollection();
-			parameters.Add("page", page.ToString());
-			parameters.Add("per_page", count.ToString());
-			return parameters;
-		}
     }
 }

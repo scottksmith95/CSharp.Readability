@@ -19,11 +19,10 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Globalization;
+using CSharp.Readability.Api.Models;
 using Spring.Json;
 
-namespace Spring.Social.Readability.Api.Impl.Json
+namespace CSharp.Readability.Api.Impl.Json
 {
 	/// <summary>
 	/// JSON deserializer for Readability article.
@@ -33,7 +32,7 @@ namespace Spring.Social.Readability.Api.Impl.Json
 	{
 		public object Deserialize(JsonValue value, JsonMapper mapper)
 		{
-			return new Article()
+			return new Article
 			{
 				Id = value.GetValue<string>("id"),
 				Author = value.GetValue<string>("author"),

@@ -18,31 +18,10 @@
 
 #endregion
 
-#region Json
-/*
-{
-    "resources": {
-        "bookmarks": {
-            "description": "The Bookmarks Collection Resource",
-            "href": "/api/rest/v1/bookmarks"
-        },
-        "contributions": {
-            "description": "The Contributions Collection Resource",
-            "href": "/api/rest/v1/contributions"
-        },
-    }
-}
-*/
-#endregion
-
-using System;
-using System.IO;
-using System.Collections.Generic;
-using Spring.Rest.Client;
-using Spring.Http;
+using CSharp.Readability.Api.Models;
 using System.Threading.Tasks;
 
-namespace Spring.Social.Readability.Api
+namespace CSharp.Readability.Api.Interfaces
 {
 	/// <summary>
 	/// Interface defining the operations for searching Readability and retrieving root data.

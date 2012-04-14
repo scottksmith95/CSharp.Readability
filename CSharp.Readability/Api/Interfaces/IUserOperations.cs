@@ -18,27 +18,10 @@
 
 #endregion
 
-#region Json
-/*
-{
-    "username": "jdoe",
-    "first_name": "John",
-    "last_name": "Doe",
-    "date_joined": "2010-10-08 12:00:17",
-    "has_active_subscription": false,
-    "reading_limit": 20
-}
-*/
-#endregion
-
-using System;
-using System.IO;
-using System.Collections.Generic;
-using Spring.Rest.Client;
-using Spring.Http;
+using CSharp.Readability.Api.Models;
 using System.Threading.Tasks;
 
-namespace Spring.Social.Readability.Api
+namespace CSharp.Readability.Api.Interfaces
 {
     /// <summary>
     /// Interface defining the operations for searching Readability and retrieving user data.

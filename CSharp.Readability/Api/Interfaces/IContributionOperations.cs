@@ -18,72 +18,11 @@
 
 #endregion
 
-#region Json
-/*
-{
-    "conditions": {
-        "domain": null,
-        "since": "2010-09-01",
-        "page": 1,
-        "user": "admin",
-        "per_page": 10,
-        "until": "2010-10-01"
-    },
-    "meta": {
-        "num_pages": 1,
-        "page": 1,
-        "item_count_total": 5,
-        "item_count": 5
-    },
-    "contributions": [
-        {
-            "date": "2010-09-01",
-            "contribution": "1.33",
-            "user": "admin",
-            "domain": "www.nytimes.com",
-            "num_bookmarks": 1
-        },
-        {
-            "date": "2010-09-01",
-            "contribution": "1.33",
-            "user": "admin",
-            "domain": "www.engadget.com",
-            "num_bookmarks": 1
-        },
-        {
-            "date": "2010-09-01",
-            "contribution": "1.33",
-            "user": "admin",
-            "domain": "paulgraham.com",
-            "num_bookmarks": 1
-        },
-        {
-            "date": "2010-09-01",
-            "contribution": "1.33",
-            "user": "admin",
-            "domain": "voices.washingtonpost.com",
-            "num_bookmarks": 1
-        },
-        {
-            "date": "2010-09-01",
-            "contribution": "2.67",
-            "user": "admin",
-            "domain": "gizmodo.com",
-            "num_bookmarks": 2
-        }
-    ]
-}
-*/
-#endregion
-
 using System;
-using System.IO;
-using System.Collections.Generic;
-using Spring.Rest.Client;
-using Spring.Http;
+using CSharp.Readability.Api.Models;
 using System.Threading.Tasks;
 
-namespace Spring.Social.Readability.Api
+namespace CSharp.Readability.Api.Interfaces
 {
 	/// <summary>
 	/// Interface defining the operations for searching Readability and retrieving contribution data.

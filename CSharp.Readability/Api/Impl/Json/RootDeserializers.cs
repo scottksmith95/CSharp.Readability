@@ -18,12 +18,10 @@
 
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
+using CSharp.Readability.Api.Models;
 using Spring.Json;
 
-namespace Spring.Social.Readability.Api.Impl.Json
+namespace CSharp.Readability.Api.Impl.Json
 {
 	/// <summary>
 	/// JSON deserializer for data for root. 

@@ -20,16 +20,16 @@
 
 using System;
 using System.Collections.Generic;
-
+using CSharp.Readability.Api.Impl.Json;
+using CSharp.Readability.Api.Interfaces;
+using CSharp.Readability.Api.Models;
 using Spring.Json;
 using Spring.Rest.Client;
 using Spring.Social.OAuth1;
 using Spring.Http.Converters;
 using Spring.Http.Converters.Json;
 
-using Spring.Social.Readability.Api.Impl.Json;
-
-namespace Spring.Social.Readability.Api.Impl
+namespace CSharp.Readability.Api.Impl
 {
     /// <summary>
     /// This is the central class for interacting with Readability.
@@ -43,15 +43,15 @@ namespace Spring.Social.Readability.Api.Impl
     /// </para>
     /// </remarks>
     /// <author>Scott Smith</author>
-    public class ReadabilityTemplate : AbstractOAuth1ApiBinding, IReadability 
+    public sealed class ReadabilityTemplate : AbstractOAuth1ApiBinding, IReadability 
     {
-		private static readonly Uri API_URI_BASE = new Uri("https://www.readability.com/api/rest/v1/");
+		private static readonly Uri ApiUriBase = new Uri("https://www.readability.com/api/rest/v1/");
 
-		private IArticleOperations articleOperations;
-		private IBookmarkOperations bookmarkOperations;
-		private IContributionOperations contributionOperations;
-		private IRootOperations rootOperations;
-        private IUserOperations userOperations;
+		private IArticleOperations _articleOperations;
+		private IBookmarkOperations _bookmarkOperations;
+		private IContributionOperations _contributionOperations;
+		private IRootOperations _rootOperations;
+        private IUserOperations _userOperations;
 
         /// <summary>
         /// Create a new instance of <see cref="ReadabilityTemplate"/>.
@@ -63,7 +63,7 @@ namespace Spring.Social.Readability.Api.Impl
         public ReadabilityTemplate(string consumerKey, string consumerSecret, string accessToken, string accessTokenSecret) 
             : base(consumerKey, consumerSecret, accessToken, accessTokenSecret)
         {
-            this.InitSubApis();
+            InitSubApis();
 	    }
 
         #region IReadability Members
@@ -73,7 +73,7 @@ namespace Spring.Social.Readability.Api.Impl
 		/// </summary>
 		public IArticleOperations ArticleOperations
 		{
-			get { return this.articleOperations; }
+			get { return _articleOperations; }
 		}
 
 		/// <summary>
@@ -81,7 +81,7 @@ namespace Spring.Social.Readability.Api.Impl
 		/// </summary>
 		public IBookmarkOperations BookmarkOperations
 		{
-			get { return this.bookmarkOperations; }
+			get { return _bookmarkOperations; }
 		}
 
 		/// <summary>
@@ -89,7 +89,7 @@ namespace Spring.Social.Readability.Api.Impl
 		/// </summary>
 		public IContributionOperations ContributionOperations
 		{
-			get { return this.contributionOperations; }
+			get { return _contributionOperations; }
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace Spring.Social.Readability.Api.Impl
 		/// </summary>
 		public IRootOperations RootOperations
 		{
-			get { return this.rootOperations; }
+			get { return _rootOperations; }
 		}
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Spring.Social.Readability.Api.Impl
         /// </summary>
         public IUserOperations UserOperations
         {
-            get { return this.userOperations; }
+            get { return _userOperations; }
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Spring.Social.Readability.Api.Impl
         /// </remarks>
         public IRestOperations RestOperations
         {
-            get { return this.RestTemplate; }
+            get { return RestTemplate; }
         }
 
         #endregion
@@ -132,7 +132,7 @@ namespace Spring.Social.Readability.Api.Impl
         /// <param name="restTemplate">The RestTemplate to configure.</param>
         protected override void ConfigureRestTemplate(RestTemplate restTemplate)
         {
-            restTemplate.BaseAddress = API_URI_BASE;
+            restTemplate.BaseAddress = ApiUriBase;
             restTemplate.ErrorHandler = new ReadabilityErrorHandler();
         }
 
@@ -149,7 +149,7 @@ namespace Spring.Social.Readability.Api.Impl
         {
             IList<IHttpMessageConverter> converters = base.GetMessageConverters();
             converters.Add(new ByteArrayHttpMessageConverter());
-            converters.Add(this.GetJsonMessageConverter());
+            converters.Add(GetJsonMessageConverter());
             return converters;
         }
 
@@ -159,9 +159,9 @@ namespace Spring.Social.Readability.Api.Impl
         /// Override to customize the message converter (for example, to set a custom object mapper or supported media types).
         /// </summary>
         /// <returns>The configured <see cref="SpringJsonHttpMessageConverter"/>.</returns>
-        protected virtual SpringJsonHttpMessageConverter GetJsonMessageConverter()
+        private SpringJsonHttpMessageConverter GetJsonMessageConverter()
         {
-            JsonMapper jsonMapper = new JsonMapper();
+            var jsonMapper = new JsonMapper();
 			jsonMapper.RegisterDeserializer(typeof(Article), new ArticleDeserializer());
 			jsonMapper.RegisterDeserializer(typeof(BookmarkCollection), new BookmarkCollectionDeserializer());
 			jsonMapper.RegisterDeserializer(typeof(BookmarkCondition), new BookmarkConditionDeserializer());
@@ -182,11 +182,11 @@ namespace Spring.Social.Readability.Api.Impl
 
         private void InitSubApis()
         {
-			this.articleOperations = new ArticleTemplate(this.RestTemplate, this.IsAuthorized);
-			this.bookmarkOperations = new BookmarkTemplate(this.RestTemplate, this.IsAuthorized);
-			this.contributionOperations = new ContributionTemplate(this.RestTemplate, this.IsAuthorized);
-			this.rootOperations = new RootTemplate(this.RestTemplate, this.IsAuthorized);
-			this.userOperations = new UserTemplate(this.RestTemplate, this.IsAuthorized);
+			_articleOperations = new ArticleTemplate(RestTemplate, IsAuthorized);
+			_bookmarkOperations = new BookmarkTemplate(RestTemplate, IsAuthorized);
+			_contributionOperations = new ContributionTemplate(RestTemplate, IsAuthorized);
+			_rootOperations = new RootTemplate(RestTemplate, IsAuthorized);
+			_userOperations = new UserTemplate(RestTemplate, IsAuthorized);
         }
     }
 }

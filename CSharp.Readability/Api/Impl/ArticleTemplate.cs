@@ -18,16 +18,12 @@
 
 #endregion
 
-using System;
-using System.Net;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-
-using Spring.Http;
+using CSharp.Readability.Api.Interfaces;
+using CSharp.Readability.Api.Models;
 using Spring.Rest.Client;
 using System.Threading.Tasks;
 
-namespace Spring.Social.Readability.Api.Impl
+namespace CSharp.Readability.Api.Impl
 {
 	/// <summary>
 	/// Implementation of <see cref="IArticleOperations"/>, providing binding to Readabilitys' article-oriented REST resources.
@@ -35,26 +31,26 @@ namespace Spring.Social.Readability.Api.Impl
 	/// <author>Scott Smith</author>
 	class ArticleTemplate : AbstractReadabilityOperations, IArticleOperations
 	{
-		private RestTemplate restTemplate;
+		private readonly RestTemplate _restTemplate;
 
 		public ArticleTemplate(RestTemplate restTemplate, bool isAuthorized)
 			: base(isAuthorized)
 		{
-			this.restTemplate = restTemplate;
+			_restTemplate = restTemplate;
 		}
 
 		#region IArticleOperations Members
 
 		public Article GetArticle(string articleId)
 		{
-			this.EnsureIsAuthorized();
-			return this.restTemplate.GetForObject<Article>("articles/" + articleId);
+			EnsureIsAuthorized();
+			return _restTemplate.GetForObject<Article>("articles/" + articleId);
 		}
 
 		public Task<Article> GetArticleAsync(string articleId)
 		{
-			this.EnsureIsAuthorized();
-			return this.restTemplate.GetForObjectAsync<Article>("articles/" + articleId);
+			EnsureIsAuthorized();
+			return _restTemplate.GetForObjectAsync<Article>("articles/" + articleId);
 		}
 
 		#endregion

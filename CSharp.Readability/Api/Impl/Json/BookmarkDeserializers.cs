@@ -20,10 +20,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Globalization;
+using CSharp.Readability.Api.Models;
 using Spring.Json;
 
-namespace Spring.Social.Readability.Api.Impl.Json
+namespace CSharp.Readability.Api.Impl.Json
 {
 	/// <summary>
 	/// JSON deserializer for bookmark collections
@@ -83,7 +83,7 @@ namespace Spring.Social.Readability.Api.Impl.Json
 	{
 		public object Deserialize(JsonValue value, JsonMapper mapper)
 		{
-			return new Meta()
+			return new Meta
 			{
 				NumberOfPages = value.GetValue<int>("num_pages"),
 				Page = value.GetValue<int>("page"),
@@ -102,7 +102,7 @@ namespace Spring.Social.Readability.Api.Impl.Json
 		public object Deserialize(JsonValue value, JsonMapper mapper)
 		{
 			IList<Bookmark> bookmarks = new List<Bookmark>();
-			foreach (JsonValue itemValue in value.GetValues())
+			foreach (var itemValue in value.GetValues())
 			{
 				bookmarks.Add(mapper.Deserialize<Bookmark>(itemValue));
 			}
@@ -118,18 +118,18 @@ namespace Spring.Social.Readability.Api.Impl.Json
 	{
 		public object Deserialize(JsonValue value, JsonMapper mapper)
 		{
-			var Deleted = false;
+			var deleted = false;
 			if (value.ContainsName("deleted"))
-				Deleted = value.GetValue<bool>("deleted");
+				deleted = value.GetValue<bool>("deleted");
 
-			return new Bookmark()
+			return new Bookmark
 			{
 				UserId = value.GetValue<int>("user_id"),
 				ReadPercent = value.GetValue<decimal>("read_percent"),
 				Updated = value.GetValue<DateTime>("date_updated"),
 				Favorite = value.GetValue<bool>("favorite"),
 				Article = mapper.Deserialize<BookmarkArticle>(value.GetValue("article")),
-				Deleted = Deleted,
+				Deleted = deleted,
 				Id = value.GetValue<int>("id"),
 				Archived = value.GetValue<DateTime?>("date_archived"),
 				Opened = value.GetValue<DateTime?>("date_opened"),
@@ -152,7 +152,7 @@ namespace Spring.Social.Readability.Api.Impl.Json
 			if (value.IsNull)
 				return null;
 
-			return new BookmarkArticle()
+			return new BookmarkArticle
 			{
 				Url = value.GetValue<string>("url"),
 				Domain = value.GetValue<string>("domain"),

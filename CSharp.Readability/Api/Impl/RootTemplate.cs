@@ -18,16 +18,12 @@
 
 #endregion
 
-using System;
-using System.Net;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-
-using Spring.Http;
+using CSharp.Readability.Api.Interfaces;
+using CSharp.Readability.Api.Models;
 using Spring.Rest.Client;
 using System.Threading.Tasks;
 
-namespace Spring.Social.Readability.Api.Impl
+namespace CSharp.Readability.Api.Impl
 {
 	/// <summary>
 	/// Implementation of <see cref="IRootOperations"/>, providing binding to Readabilitys' root-oriented REST resources.
@@ -35,26 +31,26 @@ namespace Spring.Social.Readability.Api.Impl
 	/// <author>Scott Smith</author>
 	class RootTemplate : AbstractReadabilityOperations, IRootOperations
 	{
-		private RestTemplate restTemplate;
+		private readonly RestTemplate _restTemplate;
 
 		public RootTemplate(RestTemplate restTemplate, bool isAuthorized)
 			: base(isAuthorized)
 		{
-			this.restTemplate = restTemplate;
+			_restTemplate = restTemplate;
 		}
 
 		#region IRootOperations Members
 
 		public Root GetRoot()
 		{
-			this.EnsureIsAuthorized();
-			return this.restTemplate.GetForObject<Root>("");
+			EnsureIsAuthorized();
+			return _restTemplate.GetForObject<Root>("");
 		}
 
 		public Task<Root> GetRootAsync()
 		{
-			this.EnsureIsAuthorized();
-			return this.restTemplate.GetForObjectAsync<Root>("");
+			EnsureIsAuthorized();
+			return _restTemplate.GetForObjectAsync<Root>("");
 		}
 
 		#endregion

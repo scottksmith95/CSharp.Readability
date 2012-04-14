@@ -18,11 +18,10 @@
 
 #endregion
 
-using System;
-
 using Spring.Rest.Client;
+using Spring.Social;
 
-namespace Spring.Social.Readability.Api
+namespace CSharp.Readability.Api.Interfaces
 {
     /// <summary>
     /// Interface specifying a basic set of operations for interacting with Readability.
