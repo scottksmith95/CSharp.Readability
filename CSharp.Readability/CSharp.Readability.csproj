@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0FF28DB6-7608-4874-9EDB-E4F32AD0C574}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CSharp.Readability</RootNamespace>
+    <AssemblyName>CSharp.Readability</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Rest">
+      <HintPath>..\packages\Spring.Rest.1.1.0\lib\net40\Spring.Rest.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Social.Core">
+      <HintPath>..\packages\Spring.Social.Core.1.0.0\lib\net40\Spring.Social.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\Impl\AbstractReadabilityOperations.cs" />
+    <Compile Include="Api\Impl\ArticleTemplate.cs" />
+    <Compile Include="Api\Impl\BookmarkTemplate.cs" />
+    <Compile Include="Api\Impl\ContributionTemplate.cs" />
+    <Compile Include="Api\Impl\Json\ArticleDeserializers.cs" />
+    <Compile Include="Api\Impl\Json\BookmarkDeserializers.cs" />
+    <Compile Include="Api\Impl\Json\ContributionDeserializers.cs" />
+    <Compile Include="Api\Impl\Json\RootDeserializers.cs" />
+    <Compile Include="Api\Impl\Json\UserDeserializers.cs" />
+    <Compile Include="Api\Impl\ReadabilityErrorHandler.cs" />
+    <Compile Include="Api\Impl\ReadabilityTemplate.cs" />
+    <Compile Include="Api\Impl\RootTemplate.cs" />
+    <Compile Include="Api\Impl\UserTemplate.cs" />
+    <Compile Include="Api\Interfaces\IArticleOperations.cs" />
+    <Compile Include="Api\Interfaces\IBookmarkOperations.cs" />
+    <Compile Include="Api\Interfaces\IContributionOperations.cs" />
+    <Compile Include="Api\Interfaces\IReadability.cs" />
+    <Compile Include="Api\Interfaces\IRootOperations.cs" />
+    <Compile Include="Api\Interfaces\IUserOperations.cs" />
+    <Compile Include="Api\Models\Article.cs" />
+    <Compile Include="Api\Models\Bookmark.cs" />
+    <Compile Include="Api\Models\BookmarkArticle.cs" />
+    <Compile Include="Api\Models\BookmarkCollection.cs" />
+    <Compile Include="Api\Models\BookmarkCondition.cs" />
+    <Compile Include="Api\Models\Contribution.cs" />
+    <Compile Include="Api\Models\ContributionCollection.cs" />
+    <Compile Include="Api\Models\ContributionCondition.cs" />
+    <Compile Include="Api\Models\Meta.cs" />
+    <Compile Include="Api\Models\Resource.cs" />
+    <Compile Include="Api\Models\Root.cs" />
+    <Compile Include="Api\Models\User.cs" />
+    <Compile Include="Api\ReadabilityApiError.cs" />
+    <Compile Include="Api\ReadabilityApiException.cs" />
+    <Compile Include="Connect\ReadabilityServiceProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Spring.Rest.txt" />
+    <Content Include="App_Readme\Spring.Social.Core.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
