@@ -8,7 +8,9 @@ namespace CSharp.Readability.MVC_3_Example.Controllers
     public class ReadabilityController : Controller
     {
 		// Register your own Readability app at https://www.readability.com/publishers/api
-		// Configure the Callback URL with 'http://localhost/Readability/Callback'
+
+		// Configure the Callback URL
+		private const string CallbackUrl = "http://localhost/Readability/Callback";
 
 		// Set your consumer key & secret here
 		private const string ReadabilityApiKey = "ENTER YOUR KEY HERE";
@@ -27,7 +29,7 @@ namespace CSharp.Readability.MVC_3_Example.Controllers
 				return View(bookmarks.Bookmarks);
 			}
 
-			var requestToken = _readabilityProvider.OAuthOperations.FetchRequestTokenAsync("http://localhost:55474/Readability/Callback", null).Result;
+			var requestToken = _readabilityProvider.OAuthOperations.FetchRequestTokenAsync(CallbackUrl, null).Result;
 
 			Session["RequestToken"] = requestToken;
 
