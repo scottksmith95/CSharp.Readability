@@ -1,0 +1,9 @@
+CSharp.Readability is a C# .NET wrapper for the Readability RESTful API.
+
+It contains the following
+
+  * OAuth connection support for Readability
+  * API binding for Readability
+  * ASP.NET MVC 3 example project
+
+API documentation can be found here: https://www.readability.com/publishers/api
