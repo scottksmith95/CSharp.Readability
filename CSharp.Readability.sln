@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Readability", "CSharp.Readability\CSharp.Readability.csproj", "{0FF28DB6-7608-4874-9EDB-E4F32AD0C574}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Readability.MVC 3 Example", "CSharp.Readability.MVC 3 Example\CSharp.Readability.MVC 3 Example.csproj", "{1503A117-EE29-439B-BB12-B643754C9678}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{0FF28DB6-7608-4874-9EDB-E4F32AD0C574}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FF28DB6-7608-4874-9EDB-E4F32AD0C574}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FF28DB6-7608-4874-9EDB-E4F32AD0C574}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1503A117-EE29-439B-BB12-B643754C9678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1503A117-EE29-439B-BB12-B643754C9678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1503A117-EE29-439B-BB12-B643754C9678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1503A117-EE29-439B-BB12-B643754C9678}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

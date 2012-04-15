@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CSharp.Readability.Api.Models.Bookmark>
+
+@{
+    ViewBag.Title = "Reading List";
+}
+
+<h2>Reading List</h2>
+
+@using (Html.BeginForm()) {
+    <div>
+        <input type="text" name="url" />
+        <input type="submit" value="Create new bookmark" />
+    </div>
+}
+
+<table>
+	<tr>
+		<th>Title</th>
+		<th></th>
+	</tr>
+
+@foreach (var item in Model) {
+	<tr>
+		<td>
+			<a href="https://www.readability.com/articles/@item.Article.Id">@item.Article.Title</a>
+		</td>
+		<td>
+			@Html.ActionLink("Favorite", "Favorite", new { id=item.Id }) |
+			@Html.ActionLink("Archive", "Archive", new { id=item.Id }) |
+			@Html.ActionLink("Delete", "Delete", new { id=item.Id })
+		</td>
+	</tr>
+}
+
+</table>
