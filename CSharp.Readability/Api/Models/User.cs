@@ -29,34 +29,14 @@ namespace CSharp.Readability.Api.Models
 	[Serializable]
 	public class User
 	{
-		/// <summary>
-		/// Gets or sets the username. ("username")
-		/// </summary>
 		public string Username { get; set; }
-
-		/// <summary>
-		/// Gets or sets the first name. ("first_name")
-		/// </summary>
-		public string FirstName { get; set; }
-
-		/// <summary>
-		/// Gets or sets the last name. ("last_name")
-		/// </summary>
-		public string LastName { get; set; }
-
-		/// <summary>
-		/// Gets or sets the date joined. ("date_joined")
-		/// </summary>
-		public DateTime Joined { get; set; }
-
-		/// <summary>
-		/// Gets or sets the has active subscriptions flag. ("has_active_subscription")
-		/// </summary>
-		public bool ActiveSubscription { get; set; }
-
-		/// <summary>
-		/// Gets or sets the reading limit. ("reading_limit")
-		/// </summary>
-		public int ReadingLimit { get; set; }
+		public string First_Name { get; set; }
+		public string Last_Name { get; set; }
+		public DateTime Date_Joined { get; set; }
+		public bool Has_Active_Subscription { get; set; }
+		public int Reading_Limit { get; set; }
+		public bool Is_Publisher { get; set; }
+		public int Favorites_Limit { get; set; }
+		public string Avatar_Url { get; set; }
 	}
 }

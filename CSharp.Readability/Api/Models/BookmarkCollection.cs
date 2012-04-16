@@ -30,19 +30,8 @@ namespace CSharp.Readability.Api.Models
 	[Serializable]
 	public class BookmarkCollection
 	{
-		/// <summary>
-		/// Gets or sets the conditions. ("conditions")
-		/// </summary>
-		public BookmarkCondition Condition { get; set; }
-
-		/// <summary>
-		/// Gets or sets the meta. ("meta")
-		/// </summary>
+		public BookmarkConditions Conditions { get; set; }
 		public Meta Meta { get; set; }
-
-		/// <summary>
-		/// Gets or sets the bookmarks. ("bookmarks")
-		/// </summary>
-		public IList<Bookmark> Bookmarks { get; set; }
+		public IList<BookmarkDetails> Bookmarks { get; set; }
 	}
 }

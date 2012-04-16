@@ -29,54 +29,15 @@ namespace CSharp.Readability.Api.Models
 	[Serializable]
 	public class BookmarkArticle
 	{
-		/// <summary>
-		/// Gets or sets the url. ("url")
-		/// </summary>
 		public string Url { get; set; }
-
-		/// <summary>
-		/// Gets or sets the domain. ("domain")
-		/// </summary>
 		public string Domain { get; set; }
-
-		/// <summary>
-		/// Gets or sets the excerpt. ("excerpt")
-		/// </summary>
 		public string Excerpt { get; set; }
-
-		/// <summary>
-		/// Gets or sets the word count. ("word_count")
-		/// </summary>
-		public int WordCount { get; set; }
-
-		/// <summary>
-		/// Gets or sets the processed. ("processed")
-		/// </summary>
+		public int Word_Count { get; set; }
 		public bool Processed { get; set; }
-
-		/// <summary>
-		/// Gets or sets the id. ("id")
-		/// </summary>
 		public string Id { get; set; }
-
-		/// <summary>
-		/// Gets or sets the title. ("title")
-		/// </summary>
 		public string Title { get; set; }
-
-		/// <summary>
-		/// Gets or sets the author. ("author")
-		/// </summary>
 		public string Author { get; set; }
-
-		/// <summary>
-		/// Gets or sets the direction. ("direction")
-		/// </summary>
 		public string Direction { get; set; }
-
-		/// <summary>
-		/// Gets or sets the published. ("date_published")
-		/// </summary>
-		public DateTime Published { get; set; }
+		public DateTime? Date_Published { get; set; }
 	}
 }

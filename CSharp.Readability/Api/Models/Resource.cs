@@ -29,14 +29,7 @@ namespace CSharp.Readability.Api.Models
 	[Serializable]
 	public class Resource
 	{
-		/// <summary>
-		/// Gets or sets the resoure description. ("description")
-		/// </summary>
 		public string Description { get; set; }
-
-		/// <summary>
-		/// Gets or sets the resource href. ("href")
-		/// </summary>
 		public string Href { get; set; }
 	}
 }

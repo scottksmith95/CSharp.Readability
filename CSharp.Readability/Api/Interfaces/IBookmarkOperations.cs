@@ -35,19 +35,19 @@ namespace CSharp.Readability.Api.Interfaces
 		/// Retrieve a single Bookmark, including its content.
 		/// </summary>
 		/// <param name="bookmarkId">The id of the bookmark to return.</param>
-		/// <returns>An <see cref="Bookmark"/> with the supplied bookmarkId</returns>
+		/// <returns>An <see cref="BookmarkDetails"/> with the supplied bookmarkId</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
-		Bookmark GetBookmark(int bookmarkId);
+		BookmarkDetails GetBookmark(int bookmarkId);
 
 		/// <summary>
 		/// Asynchronously retrieve a single Bookmark, including its content.
 		/// </summary>
 		/// <param name="bookmarkId">The id of the bookmark to return.</param>
-		/// <returns>An <see cref="Bookmark"/> with the supplied bookmarkId.</returns>
+		/// <returns>An <see cref="BookmarkDetails"/> with the supplied bookmarkId.</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
-		Task<Bookmark> GetBookmarkAsync(int bookmarkId);
+		Task<BookmarkDetails> GetBookmarkAsync(int bookmarkId);
 
 		/// <summary>
 		/// Retrieve all bookmarks from the bookmarks collection.
@@ -66,7 +66,7 @@ namespace CSharp.Readability.Api.Interfaces
 		/// <param name="favoritedUntil">Filter bookmarks by date favorited (until this date).</param>
 		/// <param name="updatedSince">Filter bookmarks by date updated (since this date).</param>
 		/// <param name="updatedUntil">Filter bookmarks by date updated (until this date).</param>
-		/// <returns>A list of <see cref="Bookmark"/>.</returns>
+		/// <returns>A list of <see cref="BookmarkDetails"/>.</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
 		BookmarkCollection GetAllBookmarks(int page = 1, int perPage = 20, 
@@ -94,7 +94,7 @@ namespace CSharp.Readability.Api.Interfaces
 		/// <param name="favoritedUntil">Filter bookmarks by date favorited (until this date).</param>
 		/// <param name="updatedSince">Filter bookmarks by date updated (since this date).</param>
 		/// <param name="updatedUntil">Filter bookmarks by date updated (until this date).</param>
-		/// <returns>A list of <see cref="Bookmark"/>.</returns>
+		/// <returns>A list of <see cref="BookmarkDetails"/>.</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
 		Task<BookmarkCollection> GetAllBookmarksAsync(int page = 1, int perPage = 20,
@@ -122,7 +122,7 @@ namespace CSharp.Readability.Api.Interfaces
 		/// <param name="favoritedUntil">Filter bookmarks by date favorited (until this date).</param>
 		/// <param name="updatedSince">Filter bookmarks by date updated (since this date).</param>
 		/// <param name="updatedUntil">Filter bookmarks by date updated (until this date).</param>
-		/// <returns>A list of <see cref="Bookmark"/>.</returns>
+		/// <returns>A list of <see cref="BookmarkDetails"/>.</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
 		BookmarkCollection GetReadingListBookmarks(int page = 1, int perPage = 20,
@@ -150,7 +150,7 @@ namespace CSharp.Readability.Api.Interfaces
 		/// <param name="favoritedUntil">Filter bookmarks by date favorited (until this date).</param>
 		/// <param name="updatedSince">Filter bookmarks by date updated (since this date).</param>
 		/// <param name="updatedUntil">Filter bookmarks by date updated (until this date).</param>
-		/// <returns>A list of <see cref="Bookmark"/>.</returns>
+		/// <returns>A list of <see cref="BookmarkDetails"/>.</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
 		Task<BookmarkCollection> GetReadingListBookmarksAsync(int page = 1, int perPage = 20,
@@ -178,7 +178,7 @@ namespace CSharp.Readability.Api.Interfaces
 		/// <param name="favoritedUntil">Filter bookmarks by date favorited (until this date).</param>
 		/// <param name="updatedSince">Filter bookmarks by date updated (since this date).</param>
 		/// <param name="updatedUntil">Filter bookmarks by date updated (until this date).</param>
-		/// <returns>A list of <see cref="Bookmark"/>.</returns>
+		/// <returns>A list of <see cref="BookmarkDetails"/>.</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
 		BookmarkCollection GetArchivedBookmarks(int page = 1, int perPage = 20,
@@ -206,7 +206,7 @@ namespace CSharp.Readability.Api.Interfaces
 		/// <param name="favoritedUntil">Filter bookmarks by date favorited (until this date).</param>
 		/// <param name="updatedSince">Filter bookmarks by date updated (since this date).</param>
 		/// <param name="updatedUntil">Filter bookmarks by date updated (until this date).</param>
-		/// <returns>A list of <see cref="Bookmark"/>.</returns>
+		/// <returns>A list of <see cref="BookmarkDetails"/>.</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
 		Task<BookmarkCollection> GetArchivedBookmarksAsync(int page = 1, int perPage = 20,
@@ -234,7 +234,7 @@ namespace CSharp.Readability.Api.Interfaces
 		/// <param name="favoritedUntil">Filter bookmarks by date favorited (until this date).</param>
 		/// <param name="updatedSince">Filter bookmarks by date updated (since this date).</param>
 		/// <param name="updatedUntil">Filter bookmarks by date updated (until this date).</param>
-		/// <returns>A list of <see cref="Bookmark"/>.</returns>
+		/// <returns>A list of <see cref="BookmarkDetails"/>.</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
 		BookmarkCollection GetDeletedBookmarks(int page = 1, int perPage = 20,
@@ -262,7 +262,7 @@ namespace CSharp.Readability.Api.Interfaces
 		/// <param name="favoritedUntil">Filter bookmarks by date favorited (until this date).</param>
 		/// <param name="updatedSince">Filter bookmarks by date updated (since this date).</param>
 		/// <param name="updatedUntil">Filter bookmarks by date updated (until this date).</param>
-		/// <returns>A list of <see cref="Bookmark"/>.</returns>
+		/// <returns>A list of <see cref="BookmarkDetails"/>.</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
 		Task<BookmarkCollection> GetDeletedBookmarksAsync(int page = 1, int perPage = 20,
@@ -290,7 +290,7 @@ namespace CSharp.Readability.Api.Interfaces
 		/// <param name="favoritedUntil">Filter bookmarks by date favorited (until this date).</param>
 		/// <param name="updatedSince">Filter bookmarks by date updated (since this date).</param>
 		/// <param name="updatedUntil">Filter bookmarks by date updated (until this date).</param>
-		/// <returns>A list of <see cref="Bookmark"/>.</returns>
+		/// <returns>A list of <see cref="BookmarkDetails"/>.</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
 		BookmarkCollection GetFavoriteBookmarks(int page = 1, int perPage = 20,
@@ -318,7 +318,7 @@ namespace CSharp.Readability.Api.Interfaces
 		/// <param name="favoritedUntil">Filter bookmarks by date favorited (until this date).</param>
 		/// <param name="updatedSince">Filter bookmarks by date updated (since this date).</param>
 		/// <param name="updatedUntil">Filter bookmarks by date updated (until this date).</param>
-		/// <returns>A list of <see cref="Bookmark"/>.</returns>
+		/// <returns>A list of <see cref="BookmarkDetails"/>.</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
 		Task<BookmarkCollection> GetFavoriteBookmarksAsync(int page = 1, int perPage = 20,

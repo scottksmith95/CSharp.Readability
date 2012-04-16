@@ -19,22 +19,21 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
-using CSharp.Readability.Api.Models;
-using Newtonsoft.Json;
-using Spring.Json;
 
-namespace CSharp.Readability.Api.Impl.Json
+namespace CSharp.Readability.Api.Models
 {
 	/// <summary>
-	/// JSON deserializer for contribution collections
+	/// Represents a Readability contribution condition.
 	/// </summary>
 	/// <author>Scott Smith</author>
-	class ContributionCollectionDeserializer : IJsonDeserializer
+	[Serializable]
+	public class ContributionConditions
 	{
-		public object Deserialize(JsonValue value, JsonMapper mapper)
-		{
-			return JsonConvert.DeserializeObject<ContributionCollection>(value.ToString());
-		}
+		public string Domain { get; set; }
+		public DateTime? Since { get; set; }
+		public int Page { get; set; }
+		public string User { get; set; }
+		public int Per_Page { get; set; }
+		public DateTime? Until { get; set; }
 	}
 }

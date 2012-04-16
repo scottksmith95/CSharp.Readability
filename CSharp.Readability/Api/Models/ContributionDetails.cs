@@ -27,31 +27,12 @@ namespace CSharp.Readability.Api.Models
 	/// </summary>
 	/// <author>Scott Smith</author>
 	[Serializable]
-	public class Contribution
+	public class ContributionDetails
 	{
-		/// <summary>
-		/// Gets or sets the date. ("date")
-		/// </summary>
 		public DateTime Date { get; set; }
-
-		/// <summary>
-		/// Gets or sets the contribution. ("contribution")
-		/// </summary>
-		public double ContributionAmount { get; set; }
-
-		/// <summary>
-		/// Gets or sets the user. ("user")
-		/// </summary>
+		public double Contribution { get; set; }
 		public string User { get; set; }
-
-		/// <summary>
-		/// Gets or sets the domain. ("domain")
-		/// </summary>
 		public string Domain { get; set; }
-
-		/// <summary>
-		/// Gets or sets the number of bookmarks. ("num_bookmarks")
-		/// </summary>
-		public int NumberOfBookmarks { get; set; }
+		public int Num_Bookmarks { get; set; }
 	}
 }

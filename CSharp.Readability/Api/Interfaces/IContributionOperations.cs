@@ -38,7 +38,7 @@ namespace CSharp.Readability.Api.Interfaces
 		/// <param name="domain">Filter contributions by domain.</param>
 		/// <param name="since">Filter contributions by date contributed (since this date).</param>
 		/// <param name="until">Filter contributions by date contributed (until this date).</param>
-		/// <returns>A list of <see cref="Contribution"/>.</returns>
+		/// <returns>A list of <see cref="ContributionDetails"/>.</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
 		ContributionCollection GetContributions(int page = 1, int perPage = 20, string domain = "", DateTime? since = null, DateTime? until = null);
@@ -51,7 +51,7 @@ namespace CSharp.Readability.Api.Interfaces
 		/// <param name="domain">Filter contributions by domain.</param>
 		/// <param name="since">Filter contributions by date contributed (since this date).</param>
 		/// <param name="until">Filter contributions by date contributed (until this date).</param>
-		/// <returns>A list of <see cref="Contribution"/>.</returns>
+		/// <returns>A list of <see cref="ContributionDetails"/>.</returns>
 		/// <exception cref="ReadabilityApiException">If there is an error while communicating with Readability.</exception>
 		/// <exception cref="ReadabilityApiException">If OAuth credentials was not provided.</exception>
 		Task<ContributionCollection> GetContributionsAsync(int page = 1, int perPage = 20, string domain = "", DateTime? since = null, DateTime? until = null);

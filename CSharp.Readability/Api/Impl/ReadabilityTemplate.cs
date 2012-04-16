@@ -164,17 +164,8 @@ namespace CSharp.Readability.Api.Impl
             var jsonMapper = new JsonMapper();
 			jsonMapper.RegisterDeserializer(typeof(Article), new ArticleDeserializer());
 			jsonMapper.RegisterDeserializer(typeof(BookmarkCollection), new BookmarkCollectionDeserializer());
-			jsonMapper.RegisterDeserializer(typeof(BookmarkCondition), new BookmarkConditionDeserializer());
-			jsonMapper.RegisterDeserializer(typeof(Meta), new MetaDeserializer());
-			jsonMapper.RegisterDeserializer(typeof(IList<Bookmark>), new BookmarkListDeserializer());
-			jsonMapper.RegisterDeserializer(typeof(Bookmark), new BookmarkDeserializer());
-			jsonMapper.RegisterDeserializer(typeof(BookmarkArticle), new BookmarkArticleDeserializer());
 			jsonMapper.RegisterDeserializer(typeof(ContributionCollection), new ContributionCollectionDeserializer());
-			jsonMapper.RegisterDeserializer(typeof(ContributionCondition), new ContributionConditionDeserializer());
-			jsonMapper.RegisterDeserializer(typeof(IList<Contribution>), new ContributionListDeserializer());
-			jsonMapper.RegisterDeserializer(typeof(Contribution), new ContributionDeserializer());
 			jsonMapper.RegisterDeserializer(typeof(Root), new RootDeserializer());
-			jsonMapper.RegisterDeserializer(typeof(Resource), new ResourceDeserializer());
 			jsonMapper.RegisterDeserializer(typeof(User), new UserDeserializer());
 
             return new SpringJsonHttpMessageConverter(jsonMapper);

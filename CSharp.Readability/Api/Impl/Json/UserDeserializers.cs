@@ -20,6 +20,7 @@
 
 using System;
 using CSharp.Readability.Api.Models;
+using Newtonsoft.Json;
 using Spring.Json;
 
 namespace CSharp.Readability.Api.Impl.Json
@@ -32,15 +33,7 @@ namespace CSharp.Readability.Api.Impl.Json
     {
         public object Deserialize(JsonValue value, JsonMapper mapper)
         {
-            return new User
-            {
-				Username = value.GetValue<string>("username"),
-				FirstName = value.GetValue<string>("first_name"),
-				LastName = value.GetValue<string>("last_name"),
-				Joined = value.GetValue<DateTime>("date_joined"),
-				ActiveSubscription = value.GetValue<bool>("has_active_subscription"),
-				ReadingLimit = value.GetValue<int>("reading_limit"),
-            };
+			return JsonConvert.DeserializeObject<User>(value.ToString());
         }
     }
 }

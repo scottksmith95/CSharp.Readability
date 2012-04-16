@@ -45,16 +45,16 @@ namespace CSharp.Readability.Api.Impl
 
 		#region IBookmarkOperations Members
 
-		public Bookmark GetBookmark(int bookmarkId)
+		public BookmarkDetails GetBookmark(int bookmarkId)
 		{
 			EnsureIsAuthorized();
-			return _restTemplate.GetForObject<Bookmark>("bookmarks/" + bookmarkId);
+			return _restTemplate.GetForObject<BookmarkDetails>("bookmarks/" + bookmarkId);
 		}
 
-		public Task<Bookmark> GetBookmarkAsync(int bookmarkId)
+		public Task<BookmarkDetails> GetBookmarkAsync(int bookmarkId)
 		{
 			EnsureIsAuthorized();
-			return _restTemplate.GetForObjectAsync<Bookmark>("bookmarks/" + bookmarkId);
+			return _restTemplate.GetForObjectAsync<BookmarkDetails>("bookmarks/" + bookmarkId);
 		}
 
 		public BookmarkCollection GetAllBookmarks(int page = 1, int perPage = 20, 

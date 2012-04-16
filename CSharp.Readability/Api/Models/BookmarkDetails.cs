@@ -23,40 +23,24 @@ using System;
 namespace CSharp.Readability.Api.Models
 {
 	/// <summary>
-	/// Represents a Readability contribution condition.
+	/// Represents a Readability bookmark.
 	/// </summary>
 	/// <author>Scott Smith</author>
 	[Serializable]
-	public class ContributionCondition
+	public class BookmarkDetails
 	{
-		/// <summary>
-		/// Gets or sets the domain. ("domain")
-		/// </summary>
-		public string Domain { get; set; }
-
-		/// <summary>
-		/// Gets or sets the since date. ("since")
-		/// </summary>
-		public DateTime? Since { get; set; }
-
-		/// <summary>
-		/// Gets or sets the page. ("page")
-		/// </summary>
-		public int Page { get; set; }
-
-		/// <summary>
-		/// Gets or sets the user. ("user")
-		/// </summary>
-		public string User { get; set; }
-
-		/// <summary>
-		/// Gets or sets the per page. ("per_page")
-		/// </summary>
-		public int PerPage { get; set; }
-
-		/// <summary>
-		/// Gets or sets the opened until date. ("until")
-		/// </summary>
-		public DateTime? Until { get; set; }
+		public int User_Id { get; set; }
+		public decimal Read_Percent { get; set; }
+		public DateTime Date_Updated { get; set; }
+		public bool Favorite { get; set; }
+		public BookmarkArticle Article { get; set; }
+		public bool Deleted { get; set; }
+		public int Id { get; set; }
+		public DateTime? Date_Archived { get; set; }
+		public DateTime? Date_Opened { get; set; }
+		public DateTime Date_Added { get; set; }
+		public string Article_Href { get; set; }
+		public DateTime? Date_Favorited { get; set; }
+		public bool Archive { get; set; }
 	}
 }

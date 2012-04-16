@@ -19,6 +19,7 @@
 #endregion
 
 using CSharp.Readability.Api.Models;
+using Newtonsoft.Json;
 using Spring.Json;
 
 namespace CSharp.Readability.Api.Impl.Json
@@ -31,30 +32,7 @@ namespace CSharp.Readability.Api.Impl.Json
 	{
 		public object Deserialize(JsonValue value, JsonMapper mapper)
 		{
-			value = value.GetValue("resources");
-
-			return new Root
-			{
-				OAuthResource = mapper.Deserialize<Resource>(value.GetValue("oauth")),
-				BookmarksResource = mapper.Deserialize<Resource>(value.GetValue("bookmarks")),
-				ContributionsResource = mapper.Deserialize<Resource>(value.GetValue("contributions"))
-			};
-		}
-	}
-
-	/// <summary>
-	/// JSON deserializer for data for resource. 
-	/// </summary>
-	/// <author>Scott Smith</author>
-	class ResourceDeserializer : IJsonDeserializer
-	{
-		public object Deserialize(JsonValue value, JsonMapper mapper)
-		{
-			return new Resource
-			{
-				Description = value.GetValue<string>("description"),
-				Href = value.GetValue<string>("href")
-			};
+			return JsonConvert.DeserializeObject<Root>(value.GetValue("resources").ToString());
 		}
 	}
 }

@@ -20,6 +20,12 @@
 
 using System;
 
+
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+
 namespace CSharp.Readability.Api.Models
 {
 	/// <summary>
@@ -29,19 +35,8 @@ namespace CSharp.Readability.Api.Models
 	[Serializable]
 	public class Root
 	{
-		/// <summary>
-		/// Gets or sets the oauth resoure. ("oauth")
-		/// </summary>
-		public Resource OAuthResource { get; set; }
-
-		/// <summary>
-		/// Gets or sets the bookmarks resoure. ("bookmarks")
-		/// </summary>
-		public Resource BookmarksResource { get; set; }
-
-		/// <summary>
-		/// Gets or sets the contributions resource. ("contributions")
-		/// </summary>
-		public Resource ContributionsResource { get; set; }
+		public Resource OAuth { get; set; }
+		public Resource Bookmarks { get; set; }
+		public Resource Contributions { get; set; }
 	}
 }

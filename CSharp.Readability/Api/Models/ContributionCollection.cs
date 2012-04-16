@@ -30,19 +30,8 @@ namespace CSharp.Readability.Api.Models
 	[Serializable]
 	public class ContributionCollection
 	{
-		/// <summary>
-		/// Gets or sets the conditions. ("conditions")
-		/// </summary>
-		public ContributionCondition Condition { get; set; }
-
-		/// <summary>
-		/// Gets or sets the meta. ("meta")
-		/// </summary>
+		public ContributionConditions Conditions { get; set; }
 		public Meta Meta { get; set; }
-
-		/// <summary>
-		/// Gets or sets the contributions. ("contributions")
-		/// </summary>
-		public IList<Contribution> Contributions { get; set; }
+		public IList<ContributionDetails> Contributions { get; set; }
 	}
 }

@@ -29,24 +29,9 @@ namespace CSharp.Readability.Api.Models
 	[Serializable]
 	public class Meta
 	{
-		/// <summary>
-		/// Gets or sets the number of pages. ("num_pages")
-		/// </summary>
-		public int NumberOfPages { get; set; }
-
-		/// <summary>
-		/// Gets or sets the page. ("page")
-		/// </summary>
+		public int Num_Pages { get; set; }
 		public int Page { get; set; }
-
-		/// <summary>
-		/// Gets or sets the item count total. ("item_count_total")
-		/// </summary>
-		public int ItemCountTotal { get; set; }
-
-		/// <summary>
-		/// Gets or sets the item count. ("item_count")
-		/// </summary>
-		public int ItemCount { get; set; }
+		public int Item_Count_Total { get; set; }
+		public int Item_Count { get; set; }
 	}
 }

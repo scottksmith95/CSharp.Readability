@@ -29,69 +29,21 @@ namespace CSharp.Readability.Api.Models
 	[Serializable]
 	public class Article
 	{
-		/// <summary>
-		/// Gets or sets the id. ("id")
-		/// </summary>
 		public string Id { get; set; }
-
-		/// <summary>
-		/// Gets or sets the author. ("author")
-		/// </summary>
 		public string Author { get; set; }
-
-		/// <summary>
-		/// Gets or sets the content. ("content")
-		/// </summary>
 		public string Content { get; set; }
-
-		/// <summary>
-		/// Gets or sets the content size. ("content_size")
-		/// </summary>
-		public int ContentSize { get; set; }
-
-		/// <summary>
-		/// Gets or sets the published date. ("date_published")
-		/// </summary>
-		public DateTime Published { get; set; }
-
-		/// <summary>
-		/// Gets or sets the domain. ("domain")
-		/// </summary>
+		public int Content_Size { get; set; }
+		public DateTime? Date_Published { get; set; }
 		public string Domain { get; set; }
-
-		/// <summary>
-		/// Gets or sets the next page href. ("next_page_href")
-		/// </summary>
-		public string NextPageHref { get; set; }
-
-		/// <summary>
-		/// Gets or sets the short url. ("short_url")
-		/// </summary>
-		public string ShortUrl { get; set; }
-
-		/// <summary>
-		/// Gets or sets the title. ("title")
-		/// </summary>
+		public string Next_Page_Href { get; set; }
+		public string Short_Url { get; set; }
 		public string Title { get; set; }
-
-		/// <summary>
-		/// Gets or sets the url. ("url")
-		/// </summary>
 		public string Url { get; set; }
-
-		/// <summary>
-		/// Gets or sets the direction. ("direction")
-		/// </summary>
 		public string Direction { get; set; }
-
-		/// <summary>
-		/// Gets or sets the word count. ("word_count")
-		/// </summary>
-		public int WordCount { get; set; }
-
-		/// <summary>
-		/// Gets or sets the processed. ("processed")
-		/// </summary>
+		public int Word_Count { get; set; }
 		public bool Processed { get; set; }
+		public string Lead_Image_Url { get; set; }
+		public string Dek { get; set; }
+		public string Excerpt { get; set; }
 	}
 }

@@ -34,6 +34,9 @@
     <Reference Include="Common.Logging">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\coderbits\packages\Newtonsoft.Json.4.5.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Spring.Rest">
       <HintPath>..\packages\Spring.Rest.1.1.0\lib\net40\Spring.Rest.dll</HintPath>
     </Reference>
@@ -69,13 +72,13 @@
     <Compile Include="Api\Interfaces\IRootOperations.cs" />
     <Compile Include="Api\Interfaces\IUserOperations.cs" />
     <Compile Include="Api\Models\Article.cs" />
-    <Compile Include="Api\Models\Bookmark.cs" />
+    <Compile Include="Api\Models\BookmarkDetails.cs" />
     <Compile Include="Api\Models\BookmarkArticle.cs" />
     <Compile Include="Api\Models\BookmarkCollection.cs" />
-    <Compile Include="Api\Models\BookmarkCondition.cs" />
-    <Compile Include="Api\Models\Contribution.cs" />
+    <Compile Include="Api\Models\BookmarkConditions.cs" />
+    <Compile Include="Api\Models\ContributionDetails.cs" />
     <Compile Include="Api\Models\ContributionCollection.cs" />
-    <Compile Include="Api\Models\ContributionCondition.cs" />
+    <Compile Include="Api\Models\ContributionConditions.cs" />
     <Compile Include="Api\Models\Meta.cs" />
     <Compile Include="Api\Models\Resource.cs" />
     <Compile Include="Api\Models\Root.cs" />
