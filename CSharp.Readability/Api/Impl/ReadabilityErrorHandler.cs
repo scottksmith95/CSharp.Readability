@@ -47,7 +47,7 @@ namespace CSharp.Readability.Api.Impl
         /// <param name="response">The response message with the error.</param>
         public override void HandleError(Uri requestUri, HttpMethod requestMethod, HttpResponseMessage<byte[]> response)
         {
-            int type = (int)response.StatusCode / 100;
+            var type = (int)response.StatusCode / 100;
             if (type == 4)
             {
                 HandleClientErrors(response);

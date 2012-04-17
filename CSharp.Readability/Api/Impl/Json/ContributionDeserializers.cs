@@ -18,8 +18,6 @@
 
 #endregion
 
-using System;
-using System.Collections.Generic;
 using CSharp.Readability.Api.Models;
 using Newtonsoft.Json;
 using Spring.Json;
