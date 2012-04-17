@@ -39,5 +39,7 @@ namespace CSharp.Readability.Api.Models
 		public string Author { get; set; }
 		public string Direction { get; set; }
 		public DateTime? Date_Published { get; set; }
+		public string Lead_Image_Url { get; set; }
+		public string Dek { get; set; }
 	}
 }
