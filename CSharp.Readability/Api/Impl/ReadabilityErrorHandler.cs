@@ -47,14 +47,17 @@ namespace CSharp.Readability.Api.Impl
         /// <param name="response">The response message with the error.</param>
         public override void HandleError(Uri requestUri, HttpMethod requestMethod, HttpResponseMessage<byte[]> response)
         {
+			if (response == null) throw new ArgumentNullException("response");
+
             var type = (int)response.StatusCode / 100;
-            if (type == 4)
+            switch (type)
             {
-                HandleClientErrors(response);
-            }
-            else if (type == 5)
-            {
-                HandleServerErrors(response.StatusCode);
+            	case 4:
+            		HandleClientErrors(response.StatusCode);
+            		break;
+            	case 5:
+            		HandleServerErrors(response.StatusCode);
+            		break;
             }
 
             // if not otherwise handled, do default handling and wrap with ReadabilityApiException
@@ -68,39 +71,37 @@ namespace CSharp.Readability.Api.Impl
             }
         }
 
-        private void HandleClientErrors(HttpResponseMessage<byte[]> response)
+		private void HandleClientErrors(HttpStatusCode statusCode)
         {
-        	if (response == null) throw new ArgumentNullException("response");
-
-        	if (response.StatusCode == HttpStatusCode.BadRequest)
+        	if (statusCode == HttpStatusCode.BadRequest)
 			{
 				throw new ReadabilityApiException(
 					"The server could not understand your request. Verify that request parameters (and content, if any) are valid.",
 					ReadabilityApiError.BadRequest);
 			}
 
-        	if (response.StatusCode == HttpStatusCode.Unauthorized)
+        	if (statusCode == HttpStatusCode.Unauthorized)
         	{
         		throw new ReadabilityApiException(
         			"Authentication failed or was not provided. Verify that you have sent valid credentials.",
         			ReadabilityApiError.AuthorizationRequired);
         	}
         	
-			if (response.StatusCode == HttpStatusCode.Forbidden)
+			if (statusCode == HttpStatusCode.Forbidden)
         	{
         		throw new ReadabilityApiException(
         			"The server understood your request and verified your credentials, but you are not allowed to perform the requested action.",
         			ReadabilityApiError.Forbidden);
         	}
         	
-			if (response.StatusCode == HttpStatusCode.NotFound)
+			if (statusCode == HttpStatusCode.NotFound)
         	{
         		throw new ReadabilityApiException(
         			"The resource that you requested does not exist.",
         			ReadabilityApiError.NotFound);
         	}
         	
-			if (response.StatusCode == HttpStatusCode.Conflict)
+			if (statusCode == HttpStatusCode.Conflict)
         	{
         		throw new ReadabilityApiException(
         			"The resource that you are trying to create already exists. This should also provide a Location header to the resource in question.",
