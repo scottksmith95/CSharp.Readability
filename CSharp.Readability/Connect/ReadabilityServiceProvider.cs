@@ -52,7 +52,7 @@ namespace CSharp.Readability.Connect
         /// <returns>A binding to the service provider's API.</returns>
 		public override IReadability GetApi(string accessToken, string secret)
         {
-			return new ReadabilityTemplate(ConsumerKey, this.ConsumerSecret, accessToken, secret);
+			return new ReadabilityTemplate(ConsumerKey, ConsumerSecret, accessToken, secret);
         }
     }
 }
