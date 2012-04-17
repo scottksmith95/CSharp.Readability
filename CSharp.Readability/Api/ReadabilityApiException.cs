@@ -28,7 +28,7 @@ namespace CSharp.Readability.Api
     /// <summary>
     /// The exception that is thrown when a error occurs while consuming Readability REST API.
     /// </summary>
-    /// <author>Bruno Baia</author>
+    /// <author>Scott Smith</author>
     [Serializable]
     public class ReadabilityApiException : SocialException
     {

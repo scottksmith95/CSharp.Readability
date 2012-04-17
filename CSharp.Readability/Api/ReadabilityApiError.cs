@@ -24,7 +24,7 @@ namespace CSharp.Readability.Api
     /// The <see cref="ReadabilityApiError"/> enumeration is used by the <see cref="ReadabilityApiException"/> class 
     /// to indicate what kind of error caused the exception.
     /// </summary>
-    /// <author>Bruno Baia</author>
+	/// <author>Scott Smith</author>
     public enum ReadabilityApiError
     {
 		/// <summary>

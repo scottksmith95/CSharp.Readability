@@ -30,8 +30,7 @@ namespace CSharp.Readability.Api.Impl
     /// Implementation of the <see cref="IResponseErrorHandler"/> that handles errors from Readability's REST API, 
     /// interpreting them into appropriate exceptions.
     /// </summary>
-    /// <author>Craig Walls</author>
-    /// <author>Bruno Baia (.NET)</author>
+	/// <author>Scott Smith</author>
     class ReadabilityErrorHandler : DefaultResponseErrorHandler
     {
     	/// <summary>
