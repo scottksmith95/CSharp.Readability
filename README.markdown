@@ -20,4 +20,4 @@ Resources
 - API documentation can be found here: https://www.readability.com/publishers/api
 - NuGet package can be found here: https://nuget.org/packages/CSharp.Readability
 
-[![status](http://nugetstatus.com/CSharp.Readability.png)](http://nugetstatus.com/packages/CSharp.Readability)
+Dependency status [(http://nugetstatus.com/CSharp.Readability.png)](http://nugetstatus.com/packages/CSharp.Readability)
