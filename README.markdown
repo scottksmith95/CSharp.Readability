@@ -21,5 +21,6 @@ Resources
 - NuGet package can be found here: https://nuget.org/packages/CSharp.Readability
 
 Nuget Dependency Status 
+-----------------------
 
 [![status](http://nugetstatus.com/CSharp.Readability.png)](http://nugetstatus.com/packages/CSharp.Readability)
