@@ -23,4 +23,4 @@ Resources
 NuGet Dependency Status 
 -----------------------
 
-[![status](http://nugetstatus.com/CSharp.Readability.png)](http://nugetstatus.com/packages/CSharp.Readability)
+[![NuGet Status](http://nugetstatus.com/CSharp.Readability.png)](http://nugetstatus.com/packages/CSharp.Readability)
