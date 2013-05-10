@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 
 namespace CSharp.Readability.Api.Models
 {
@@ -42,5 +43,6 @@ namespace CSharp.Readability.Api.Models
 		public string Article_Href { get; set; }
 		public DateTime? Date_Favorited { get; set; }
 		public bool Archive { get; set; }
+        public List<Tag> tags { get; set; }
 	}
 }

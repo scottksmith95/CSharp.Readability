@@ -82,6 +82,7 @@
     <Compile Include="Api\Models\Meta.cs" />
     <Compile Include="Api\Models\Resource.cs" />
     <Compile Include="Api\Models\Root.cs" />
+    <Compile Include="Api\Models\Tag.cs" />
     <Compile Include="Api\Models\User.cs" />
     <Compile Include="Api\ReadabilityApiError.cs" />
     <Compile Include="Api\ReadabilityApiException.cs" />
