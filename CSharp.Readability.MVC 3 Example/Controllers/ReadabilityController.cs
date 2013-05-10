@@ -10,7 +10,7 @@ namespace CSharp.Readability.MVC_3_Example.Controllers
 		// Register your own Readability app at https://www.readability.com/publishers/api
 
 		// Configure the Callback URL
-		private const string CallbackUrl = "http://localhost/Readability/Callback";
+        private const string CallbackUrl = "http://localhost:55005/Readability/Callback";
 
 		// Set your consumer key & secret here
 		private const string ReadabilityApiKey = "ENTER YOUR KEY HERE";
