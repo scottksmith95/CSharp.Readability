@@ -33,22 +33,22 @@ namespace CSharp.Readability.Api.Impl
     {
         private readonly bool _isAuthorized;
 
-    	protected AbstractReadabilityOperations(bool isAuthorized) 
+        protected AbstractReadabilityOperations(bool isAuthorized) 
         {
-		    _isAuthorized = isAuthorized;
-	    }
+            _isAuthorized = isAuthorized;
+        }
 
         protected void EnsureIsAuthorized() 
         {
-		    if (!_isAuthorized) 
+            if (!_isAuthorized) 
             {
-			    throw new ReadabilityApiException(
+                throw new ReadabilityApiException(
                     "Authorization is required for the operation, but the API binding was created without authorization.", 
                     ReadabilityApiError.AuthorizationRequired);
-		    }
-	    }
+            }
+        }
 
-    	protected string BuildUrl(string path, NameValueCollection parameters)
+        protected string BuildUrl(string path, NameValueCollection parameters)
         {
             var qsBuilder = new StringBuilder();
             bool isFirst = true;
@@ -68,6 +68,6 @@ namespace CSharp.Readability.Api.Impl
                 qsBuilder.Append(HttpUtils.UrlEncode(parameters[key]));
             }
             return path + qsBuilder;
-	    }
+        }
     }
 }

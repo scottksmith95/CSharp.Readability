@@ -45,12 +45,12 @@ namespace CSharp.Readability.Api.Impl
     /// <author>Scott Smith</author>
     public sealed class ReadabilityTemplate : AbstractOAuth1ApiBinding, IReadability 
     {
-		private static readonly Uri ApiUriBase = new Uri("https://www.readability.com/api/rest/v1/");
+        private static readonly Uri ApiUriBase = new Uri("https://www.readability.com/api/rest/v1/");
 
-		private IArticleOperations _articleOperations;
-		private IBookmarkOperations _bookmarkOperations;
-		private IContributionOperations _contributionOperations;
-		private IRootOperations _rootOperations;
+        private IArticleOperations _articleOperations;
+        private IBookmarkOperations _bookmarkOperations;
+        private IContributionOperations _contributionOperations;
+        private IRootOperations _rootOperations;
         private IUserOperations _userOperations;
 
         /// <summary>
@@ -64,41 +64,41 @@ namespace CSharp.Readability.Api.Impl
             : base(consumerKey, consumerSecret, accessToken, accessTokenSecret)
         {
             InitSubApis();
-	    }
+        }
 
         #region IReadability Members
 
-		/// <summary>
-		/// Gets the portion of the Readability API containing the article operations.
-		/// </summary>
-		public IArticleOperations ArticleOperations
-		{
-			get { return _articleOperations; }
-		}
+        /// <summary>
+        /// Gets the portion of the Readability API containing the article operations.
+        /// </summary>
+        public IArticleOperations ArticleOperations
+        {
+            get { return _articleOperations; }
+        }
 
-		/// <summary>
-		/// Gets the portion of the Readability API containing the bookmark operations.
-		/// </summary>
-		public IBookmarkOperations BookmarkOperations
-		{
-			get { return _bookmarkOperations; }
-		}
+        /// <summary>
+        /// Gets the portion of the Readability API containing the bookmark operations.
+        /// </summary>
+        public IBookmarkOperations BookmarkOperations
+        {
+            get { return _bookmarkOperations; }
+        }
 
-		/// <summary>
-		/// Gets the portion of the Readability API containing the contribution operations.
-		/// </summary>
-		public IContributionOperations ContributionOperations
-		{
-			get { return _contributionOperations; }
-		}
+        /// <summary>
+        /// Gets the portion of the Readability API containing the contribution operations.
+        /// </summary>
+        public IContributionOperations ContributionOperations
+        {
+            get { return _contributionOperations; }
+        }
 
-		/// <summary>
-		/// Gets the portion of the Readability API containing the root operations.
-		/// </summary>
-		public IRootOperations RootOperations
-		{
-			get { return _rootOperations; }
-		}
+        /// <summary>
+        /// Gets the portion of the Readability API containing the root operations.
+        /// </summary>
+        public IRootOperations RootOperations
+        {
+            get { return _rootOperations; }
+        }
 
         /// <summary>
         /// Gets the portion of the Readability API containing the user operations.
@@ -162,22 +162,22 @@ namespace CSharp.Readability.Api.Impl
         private SpringJsonHttpMessageConverter GetJsonMessageConverter()
         {
             var jsonMapper = new JsonMapper();
-			jsonMapper.RegisterDeserializer(typeof(Article), new ArticleDeserializer());
-			jsonMapper.RegisterDeserializer(typeof(BookmarkCollection), new BookmarkCollectionDeserializer());
-			jsonMapper.RegisterDeserializer(typeof(ContributionCollection), new ContributionCollectionDeserializer());
-			jsonMapper.RegisterDeserializer(typeof(Root), new RootDeserializer());
-			jsonMapper.RegisterDeserializer(typeof(User), new UserDeserializer());
+            jsonMapper.RegisterDeserializer(typeof(Article), new ArticleDeserializer());
+            jsonMapper.RegisterDeserializer(typeof(BookmarkCollection), new BookmarkCollectionDeserializer());
+            jsonMapper.RegisterDeserializer(typeof(ContributionCollection), new ContributionCollectionDeserializer());
+            jsonMapper.RegisterDeserializer(typeof(Root), new RootDeserializer());
+            jsonMapper.RegisterDeserializer(typeof(User), new UserDeserializer());
 
             return new SpringJsonHttpMessageConverter(jsonMapper);
         }
 
         private void InitSubApis()
         {
-			_articleOperations = new ArticleTemplate(RestTemplate, IsAuthorized);
-			_bookmarkOperations = new BookmarkTemplate(RestTemplate, IsAuthorized);
-			_contributionOperations = new ContributionTemplate(RestTemplate, IsAuthorized);
-			_rootOperations = new RootTemplate(RestTemplate, IsAuthorized);
-			_userOperations = new UserTemplate(RestTemplate, IsAuthorized);
+            _articleOperations = new ArticleTemplate(RestTemplate, IsAuthorized);
+            _bookmarkOperations = new BookmarkTemplate(RestTemplate, IsAuthorized);
+            _contributionOperations = new ContributionTemplate(RestTemplate, IsAuthorized);
+            _rootOperations = new RootTemplate(RestTemplate, IsAuthorized);
+            _userOperations = new UserTemplate(RestTemplate, IsAuthorized);
         }
     }
 }

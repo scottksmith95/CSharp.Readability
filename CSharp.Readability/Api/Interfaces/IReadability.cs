@@ -26,28 +26,28 @@ namespace CSharp.Readability.Api.Interfaces
     /// <summary>
     /// Interface specifying a basic set of operations for interacting with Readability.
     /// </summary>
-	/// <author>Scott Smith</author>
+    /// <author>Scott Smith</author>
     public interface IReadability : IApiBinding
     {
-		/// <summary>
-		/// Gets the portion of the Readability API containing the article operations.
-		/// </summary>
-		IArticleOperations ArticleOperations { get; }
+        /// <summary>
+        /// Gets the portion of the Readability API containing the article operations.
+        /// </summary>
+        IArticleOperations ArticleOperations { get; }
 
-		/// <summary>
-		/// Gets the portion of the Readability API containing the bookmark operations.
-		/// </summary>
-		IBookmarkOperations BookmarkOperations { get; }
+        /// <summary>
+        /// Gets the portion of the Readability API containing the bookmark operations.
+        /// </summary>
+        IBookmarkOperations BookmarkOperations { get; }
 
-		/// <summary>
-		/// Gets the portion of the Readability API containing the contribution operations.
-		/// </summary>
-		IContributionOperations ContributionOperations { get; }
+        /// <summary>
+        /// Gets the portion of the Readability API containing the contribution operations.
+        /// </summary>
+        IContributionOperations ContributionOperations { get; }
 
-		/// <summary>
-		/// Gets the portion of the Readability API containing the root operations.
-		/// </summary>
-		IRootOperations RootOperations { get; }
+        /// <summary>
+        /// Gets the portion of the Readability API containing the root operations.
+        /// </summary>
+        IRootOperations RootOperations { get; }
 
         /// <summary>
         /// Gets the portion of the Readability API containing the user operations.

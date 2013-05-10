@@ -28,7 +28,7 @@ namespace CSharp.Readability.Api.Impl
     /// <summary>
     /// Implementation of <see cref="IUserOperations"/>, providing binding to Readabilitys' user-oriented REST resources.
     /// </summary>
-	/// <author>Scott Smith</author>
+    /// <author>Scott Smith</author>
     class UserTemplate : AbstractReadabilityOperations, IUserOperations
     {
         private readonly RestTemplate _restTemplate;
@@ -41,17 +41,17 @@ namespace CSharp.Readability.Api.Impl
 
         #region IUserOperations Members
 
-		public User GetUser() 
+        public User GetUser() 
         {
-		    EnsureIsAuthorized();
-			return _restTemplate.GetForObject<User>("users/_current");
-	    }
+            EnsureIsAuthorized();
+            return _restTemplate.GetForObject<User>("users/_current");
+        }
 
-		public Task<User> GetUserAsync()
-		{
-			EnsureIsAuthorized();
-			return _restTemplate.GetForObjectAsync<User>("users/_current");
-		}
+        public Task<User> GetUserAsync()
+        {
+            EnsureIsAuthorized();
+            return _restTemplate.GetForObjectAsync<User>("users/_current");
+        }
 
         #endregion
 

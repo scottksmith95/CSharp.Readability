@@ -24,36 +24,36 @@ namespace CSharp.Readability.Api
     /// The <see cref="ReadabilityApiError"/> enumeration is used by the <see cref="ReadabilityApiException"/> class 
     /// to indicate what kind of error caused the exception.
     /// </summary>
-	/// <author>Scott Smith</author>
+    /// <author>Scott Smith</author>
     public enum ReadabilityApiError
     {
-		/// <summary>
-		/// 400 status code. The server could not understand your request. Verify that request parameters (and content, if any) are valid.
-		/// </summary>
-		BadRequest,
+        /// <summary>
+        /// 400 status code. The server could not understand your request. Verify that request parameters (and content, if any) are valid.
+        /// </summary>
+        BadRequest,
 
         /// <summary>
-		/// 401 status code. Authentication failed or was not provided. Verify that you have sent valid credentials.
+        /// 401 status code. Authentication failed or was not provided. Verify that you have sent valid credentials.
         /// </summary>
         AuthorizationRequired,
 
-		/// <summary>
-		/// 403 status code. The server understood your request and verified your credentials, but you are not allowed to perform the requested action.
-		/// </summary>
-		Forbidden,
+        /// <summary>
+        /// 403 status code. The server understood your request and verified your credentials, but you are not allowed to perform the requested action.
+        /// </summary>
+        Forbidden,
 
         /// <summary>
-		/// 404 status code. The resource that you requested does not exist.
+        /// 404 status code. The resource that you requested does not exist.
         /// </summary>
         NotFound,
 
         /// <summary>
-		/// 409 status code. The resource that you are trying to create already exists. This should also provide a Location header to the resource in question.
+        /// 409 status code. The resource that you are trying to create already exists. This should also provide a Location header to the resource in question.
         /// </summary>
         Conflict,
 
         /// <summary>
-		/// 500 status code. An unknown error has occurred.
+        /// 500 status code. An unknown error has occurred.
         /// </summary>
         InternalServerError
     }

@@ -23,26 +23,26 @@ using System.Collections.Generic;
 
 namespace CSharp.Readability.Api.Models
 {
-	/// <summary>
-	/// Represents a Readability bookmark.
-	/// </summary>
-	/// <author>Scott Smith</author>
-	[Serializable]
-	public class BookmarkDetails
-	{
-		public int User_Id { get; set; }
-		public decimal Read_Percent { get; set; }
-		public DateTime Date_Updated { get; set; }
-		public bool Favorite { get; set; }
-		public BookmarkArticle Article { get; set; }
-		public bool Deleted { get; set; }
-		public int Id { get; set; }
-		public DateTime? Date_Archived { get; set; }
-		public DateTime? Date_Opened { get; set; }
-		public DateTime Date_Added { get; set; }
-		public string Article_Href { get; set; }
-		public DateTime? Date_Favorited { get; set; }
-		public bool Archive { get; set; }
+    /// <summary>
+    /// Represents a Readability bookmark.
+    /// </summary>
+    /// <author>Scott Smith</author>
+    [Serializable]
+    public class BookmarkDetails
+    {
+        public int User_Id { get; set; }
+        public decimal Read_Percent { get; set; }
+        public DateTime Date_Updated { get; set; }
+        public bool Favorite { get; set; }
+        public BookmarkArticle Article { get; set; }
+        public bool Deleted { get; set; }
+        public int Id { get; set; }
+        public DateTime? Date_Archived { get; set; }
+        public DateTime? Date_Opened { get; set; }
+        public DateTime Date_Added { get; set; }
+        public string Article_Href { get; set; }
+        public DateTime? Date_Favorited { get; set; }
+        public bool Archive { get; set; }
         public List<Tag> tags { get; set; }
-	}
+    }
 }

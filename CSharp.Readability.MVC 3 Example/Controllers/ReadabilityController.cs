@@ -7,101 +7,101 @@ namespace CSharp.Readability.MVC_3_Example.Controllers
 {
     public class ReadabilityController : Controller
     {
-		// Register your own Readability app at https://www.readability.com/publishers/api
+        // Register your own Readability app at https://www.readability.com/publishers/api
 
-		// Configure the Callback URL
+        // Configure the Callback URL
         private const string CallbackUrl = "http://localhost:55005/Readability/Callback";
 
-		// Set your consumer key & secret here
-		private const string ReadabilityApiKey = "ENTER YOUR KEY HERE";
-		private const string ReadabilityApiSecret = "ENTER YOUR SECRET HERE";
+        // Set your consumer key & secret here
+        private const string ReadabilityApiKey = "ENTER YOUR KEY HERE";
+        private const string ReadabilityApiSecret = "ENTER YOUR SECRET HERE";
 
-		readonly IOAuth1ServiceProvider<IReadability> _readabilityProvider = new ReadabilityServiceProvider(ReadabilityApiKey, ReadabilityApiSecret);
+        readonly IOAuth1ServiceProvider<IReadability> _readabilityProvider = new ReadabilityServiceProvider(ReadabilityApiKey, ReadabilityApiSecret);
 
-		public ActionResult Index()
-		{
-			var token = Session["AccessToken"] as OAuthToken;
-			if (token != null)
-			{
-				var readabilityClient = _readabilityProvider.GetApi(token.Value, token.Secret);
-				var bookmarks = readabilityClient.BookmarkOperations.GetReadingListBookmarksAsync(1, 50).Result;
+        public ActionResult Index()
+        {
+            var token = Session["AccessToken"] as OAuthToken;
+            if (token != null)
+            {
+                var readabilityClient = _readabilityProvider.GetApi(token.Value, token.Secret);
+                var bookmarks = readabilityClient.BookmarkOperations.GetReadingListBookmarksAsync(1, 50).Result;
 
-				return View(bookmarks.Bookmarks);
-			}
+                return View(bookmarks.Bookmarks);
+            }
 
-			var requestToken = _readabilityProvider.OAuthOperations.FetchRequestTokenAsync(CallbackUrl, null).Result;
+            var requestToken = _readabilityProvider.OAuthOperations.FetchRequestTokenAsync(CallbackUrl, null).Result;
 
-			Session["RequestToken"] = requestToken;
+            Session["RequestToken"] = requestToken;
 
-			return Redirect(_readabilityProvider.OAuthOperations.BuildAuthenticateUrl(requestToken.Value, null));
-		}
+            return Redirect(_readabilityProvider.OAuthOperations.BuildAuthenticateUrl(requestToken.Value, null));
+        }
 
-		[HttpPost]
-		public ActionResult Index(string url)
-		{
-			var token = Session["AccessToken"] as OAuthToken;
+        [HttpPost]
+        public ActionResult Index(string url)
+        {
+            var token = Session["AccessToken"] as OAuthToken;
 
-			if (token != null)
-			{
-				var readabilityClient = _readabilityProvider.GetApi(token.Value, token.Secret);
+            if (token != null)
+            {
+                var readabilityClient = _readabilityProvider.GetApi(token.Value, token.Secret);
 
-				readabilityClient.BookmarkOperations.AddBookmarkAsync(url);
-			}
+                readabilityClient.BookmarkOperations.AddBookmarkAsync(url);
+            }
 
-			return RedirectToAction("Index");
-		}
+            return RedirectToAction("Index");
+        }
 
-		public ActionResult Callback(string oauth_verifier)
-		{
-			var requestToken = Session["RequestToken"] as OAuthToken;
-			var authorizedRequestToken = new AuthorizedRequestToken(requestToken, oauth_verifier);
-			var token = _readabilityProvider.OAuthOperations.ExchangeForAccessTokenAsync(authorizedRequestToken, null).Result;
+        public ActionResult Callback(string oauth_verifier)
+        {
+            var requestToken = Session["RequestToken"] as OAuthToken;
+            var authorizedRequestToken = new AuthorizedRequestToken(requestToken, oauth_verifier);
+            var token = _readabilityProvider.OAuthOperations.ExchangeForAccessTokenAsync(authorizedRequestToken, null).Result;
 
-			Session["AccessToken"] = token;
+            Session["AccessToken"] = token;
 
-			return RedirectToAction("Index");
-		}
+            return RedirectToAction("Index");
+        }
 
-		public ActionResult Favorite(int id)
-		{
-			var token = Session["AccessToken"] as OAuthToken;
+        public ActionResult Favorite(int id)
+        {
+            var token = Session["AccessToken"] as OAuthToken;
 
-			if (token != null)
-			{
-				var readabilityClient = _readabilityProvider.GetApi(token.Value, token.Secret);
+            if (token != null)
+            {
+                var readabilityClient = _readabilityProvider.GetApi(token.Value, token.Secret);
 
-				readabilityClient.BookmarkOperations.UpdateBookmarkAsync(id, true);
-			}
+                readabilityClient.BookmarkOperations.UpdateBookmarkAsync(id, true);
+            }
 
-			return RedirectToAction("Index");
-		}
+            return RedirectToAction("Index");
+        }
 
-		public ActionResult Archive(int id)
-		{
-			var token = Session["AccessToken"] as OAuthToken;
+        public ActionResult Archive(int id)
+        {
+            var token = Session["AccessToken"] as OAuthToken;
 
-			if (token != null)
-			{
-				var readabilityClient = _readabilityProvider.GetApi(token.Value, token.Secret);
+            if (token != null)
+            {
+                var readabilityClient = _readabilityProvider.GetApi(token.Value, token.Secret);
 
-				readabilityClient.BookmarkOperations.UpdateBookmarkAsync(id, false, true);
-			}
+                readabilityClient.BookmarkOperations.UpdateBookmarkAsync(id, false, true);
+            }
 
-			return RedirectToAction("Index");
-		}
+            return RedirectToAction("Index");
+        }
 
-		public ActionResult Delete(int id)
-		{
-			var token = Session["AccessToken"] as OAuthToken;
+        public ActionResult Delete(int id)
+        {
+            var token = Session["AccessToken"] as OAuthToken;
 
-			if (token != null)
-			{
-				var readabilityClient = _readabilityProvider.GetApi(token.Value, token.Secret);
+            if (token != null)
+            {
+                var readabilityClient = _readabilityProvider.GetApi(token.Value, token.Secret);
 
-				readabilityClient.BookmarkOperations.DeleteBookmarkAsync(id);
-			}
+                readabilityClient.BookmarkOperations.DeleteBookmarkAsync(id);
+            }
 
-			return RedirectToAction("Index");
-		}
+            return RedirectToAction("Index");
+        }
     }
 }

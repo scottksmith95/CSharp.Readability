@@ -26,21 +26,21 @@ using Spring.Social.OAuth1;
 namespace CSharp.Readability.Connect
 {
     /// <summary>
-	/// Readability <see cref="IServiceProvider"/> implementation.
+    /// Readability <see cref="IServiceProvider"/> implementation.
     /// </summary>
     /// <author>Scott Smith</author>
-	public class ReadabilityServiceProvider : AbstractOAuth1ServiceProvider<IReadability>
+    public class ReadabilityServiceProvider : AbstractOAuth1ServiceProvider<IReadability>
     {
         /// <summary>
-		/// Creates a new instance of <see cref="ReadabilityServiceProvider"/>.
+        /// Creates a new instance of <see cref="ReadabilityServiceProvider"/>.
         /// </summary>
         /// <param name="consumerKey">The application's API key.</param>
         /// <param name="consumerSecret">The application's API secret.</param>
-		public ReadabilityServiceProvider(string consumerKey, string consumerSecret)
+        public ReadabilityServiceProvider(string consumerKey, string consumerSecret)
             : base(consumerKey, consumerSecret, new OAuth1Template(consumerKey, consumerSecret,
-				"https://www.readability.com/api/rest/v1/oauth/request_token/",
-				"https://www.readability.com/api/rest/v1/oauth/authorize/",
-				"https://www.readability.com/api/rest/v1/oauth/access_token/"))
+                "https://www.readability.com/api/rest/v1/oauth/request_token/",
+                "https://www.readability.com/api/rest/v1/oauth/authorize/",
+                "https://www.readability.com/api/rest/v1/oauth/access_token/"))
         {
         }
 
@@ -50,9 +50,9 @@ namespace CSharp.Readability.Connect
         /// <param name="accessToken">The API access token.</param>
         /// <param name="secret">The access token secret.</param>
         /// <returns>A binding to the service provider's API.</returns>
-		public override IReadability GetApi(string accessToken, string secret)
+        public override IReadability GetApi(string accessToken, string secret)
         {
-			return new ReadabilityTemplate(ConsumerKey, ConsumerSecret, accessToken, secret);
+            return new ReadabilityTemplate(ConsumerKey, ConsumerSecret, accessToken, secret);
         }
     }
 }
