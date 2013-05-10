@@ -21,6 +21,10 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,18 +44,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
+    <Reference Include="Common.Logging, Version=2.1.2.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Spring.Rest, Version=1.1.0.5340, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <HintPath>..\packages\Spring.Rest.1.1.0\lib\net40\Spring.Rest.dll</HintPath>
+    <Reference Include="Spring.Rest, Version=1.1.1.35040, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spring.Rest.1.1.1\lib\net40-client\Spring.Rest.dll</HintPath>
     </Reference>
-    <Reference Include="Spring.Social.Core, Version=1.0.0.5340, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <HintPath>..\packages\Spring.Social.Core.1.0.0\lib\net40\Spring.Social.Core.dll</HintPath>
+    <Reference Include="Spring.Social.Core, Version=1.0.1.35140, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spring.Social.Core.1.0.1\lib\net40-client\Spring.Social.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
