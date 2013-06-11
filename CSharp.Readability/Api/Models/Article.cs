@@ -40,7 +40,7 @@ namespace CSharp.Readability.Api.Models
 		public string Title { get; set; }
 		public string Url { get; set; }
 		public string Direction { get; set; }
-		public int Word_Count { get; set; }
+		public int? Word_Count { get; set; }
 		public bool Processed { get; set; }
 		public string Lead_Image_Url { get; set; }
 		public string Dek { get; set; }

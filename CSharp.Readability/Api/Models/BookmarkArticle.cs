@@ -32,7 +32,7 @@ namespace CSharp.Readability.Api.Models
 		public string Url { get; set; }
 		public string Domain { get; set; }
 		public string Excerpt { get; set; }
-		public int Word_Count { get; set; }
+		public int? Word_Count { get; set; }
 		public bool Processed { get; set; }
 		public string Id { get; set; }
 		public string Title { get; set; }
